@@ -4,6 +4,8 @@ environment using Quartus-II from Intel and Modelsim.
 ## Explanation of each modeule
 ### D Flip Flop
 A D (Data or Delay) Flip-Flop is a digital memory circuit that stores a single bit of data. It has a clock input and stores the data present at the "D" input when the clock edge (usually rising) occurs. The stored value is then output at "Q".
+### Fifo Buffer
+A 32-bit FIFO (First-In, First-Out) buffer is a type of memory structure that stores 32-bit wide data and ensures that the first piece of data written to the buffer is the first to be read. It operates on the principle of sequential access, where data is processed in the same order it was received, making it ideal for streamlining data flow in systems that require ordered processing.
 ### Fifo Controller
 A 32-bit FIFO (First-In, First-Out) Controller manages data flow in a FIFO buffer with 32-bit wide data. It ensures that data is read and written in the order it was received, useful in data storage or buffering between systems operating at different speeds.
 ### Free Running Binary Counter
@@ -16,6 +18,8 @@ A Partial Full Adder is typically a simpler version of the Full Adder, handling 
 A Programmable Counter is a digital counter whose counting sequence can be adjusted or programmed by the user. It can be set to count up to a specified value or follow a specific sequence.
 ### Pulse with Modulation
 PWM is a technique used to vary the width of pulses in a signal to control the power delivered to a load, such as controlling motor speed or dimming an LED.
+### Register
+A 32-bit register is a storage element used to hold 32 bits of data. It is often used in digital systems to store intermediate results, address values, or data for processing. Registers can be loaded with new data or hold their current value until an external signal (such as a clock pulse) triggers a change.
 ### Right Shift Register
 A 4-bit Right Shift Register is a storage device that shifts its stored bits to the right with each clock pulse, often used for serial-to-parallel data conversion or data shifting.
 ### Universal Shift Register
