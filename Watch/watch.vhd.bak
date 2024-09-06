@@ -1,0 +1,49 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity watch is 
+	port(
+		clk,reset: in std_logic;
+		second,minute: out std_logic_vector(5 downto 0)
+	);
+end watch;
+
+architecture behavioral of watch is
+	signal r_next,r_reg: unsigned(19 downto 0);
+	signal s_next,s_reg: unsigned(5 downto 0);
+	signal m_next,m_reg: unsigned(5 downto 0);
+	signal s_en,m_en: std_logic
+begin
+	--state registers
+	process(clk,reset)
+	begin
+		if (reset = '1') then
+			r_reg <= (others => '0');
+			s_reg <= (others => '0');
+			m_reg <= (others => '0');
+		elsif (clk' event and clk = '1') then
+			r_reg <= r_next;
+			s_reg <= s_next;
+			m_reg <= m_next;
+		end if;
+	end process;
+	--next state and output logic for 1000000 counter flip flop
+	r_next <=  (others => '0') when r_reg = "999999" else
+		r_reg + 1;
+	s_en <= '1' when r_reg = "999999" else
+		'0';
+	--next state and output logic for second flip flop
+	s_next <= (others => '0') when (s_reg = '59' and s_en = '1') else
+				 s_reg + 1       when s_en = '1' else
+			    s_reg;
+	m_en <= '1' when s_reg = '59' and s_en = '1' else
+	        '0';
+	--next state and output logic for minute counter flip flop
+	m_next <= (others => '0') when (m_reg = '59' and m_en = '1') else
+				 m_reg + 1       when m_en = '1' else
+				 m_reg;
+	--output logic
+	second <= std_logic_vector(s_reg);
+	minute <= std_logic_vector(m_reg);
+end behavioral;
