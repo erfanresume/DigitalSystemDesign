@@ -1,7 +1,7 @@
 # Overview
 This repository contains digital system design implementations. In this repository I use a VHDL based methodology to design each module. Also I Implemented these modules in a practical FPGA design 
 environment using Quartus-II from Intel and Modelsim. 
-## Modeules
+## Explanation of each modeule
 ### D Flip Flop
 A D (Data or Delay) Flip-Flop is a digital memory circuit that stores a single bit of data. It has a clock input and stores the data present at the "D" input when the clock edge (usually rising) occurs. The stored value is then output at "Q".
 ### Fifo Controller
